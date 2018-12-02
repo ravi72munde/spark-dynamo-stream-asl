@@ -1,6 +1,15 @@
 # spark-dynamo-stream-asl
 Kinesis Adapter implementation for DynamoDB streams for Spark Streaming
 
+#Steps
+* Clone this repo
+* Build the package jar using mvn
+* Include it in your project dependencies manually
+
+
+The implementation is a modification of [kinesis-asl](https://github.com/apache/spark/tree/master/external/kinesis-asl") artifact from spark-2.4.0 package
+
+
 # Usage Sample
 
 ```
