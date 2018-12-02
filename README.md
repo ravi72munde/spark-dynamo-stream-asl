@@ -1,7 +1,7 @@
 # Using DynamoDB Streams in Apache Spark
 Kinesis Adapter implementation for DynamoDB streams for Spark Streaming
 
-#Steps
+# Steps
 * Clone this repo
 * Build the package jar using mvn
 * Include it in your project dependencies manually
