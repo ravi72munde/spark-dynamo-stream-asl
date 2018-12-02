@@ -1,4 +1,4 @@
-# spark-dynamo-stream-asl
+# Using DynamoDB Streams in Apache Spark
 Kinesis Adapter implementation for DynamoDB streams for Spark Streaming
 
 #Steps
