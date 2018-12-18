@@ -57,7 +57,7 @@ object DynamoStreamApp extends App {
     .storageLevel(StorageLevel.MEMORY_AND_DISK_2)
     .buildWithMessageHandler(rawRecordHandler)
 
-  val stream_df = KinesisInputDStream.builder
+  val stream = KinesisInputDStream.builder
     .streamingContext(ssc)
     .streamName("sample-tablename-2")
     .regionName("us-east-1")
@@ -68,11 +68,12 @@ object DynamoStreamApp extends App {
     .buildWithMessageHandler(recordHandler)
 
   //some processing on rdd
-  stream_df.print() //should print the record in the form of {"attribute"->"value"} map
+  stream_raw.print() //should print the record in the form of {"attribute"->"value"} map
 
+  case class SchemeClass(id:String,value;String)
   //creating dataframe, can be stored as temp view
-  val cabSchema = Encoders.product[CabPrice].schema
-  stream_cab.foreachRDD(rdd => {
+  val sampleSchema = Encoders.product[SchemeClass].schema
+  stream.foreachRDD(rdd => {
     val rowRdd = rdd.map(r => Row.fromSeq(r))
     val df = sqlContext.createDataFrame(rowRdd, cabSchema)
     df.printSchema() // should print a schema similar to your case class
